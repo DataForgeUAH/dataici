@@ -268,6 +268,27 @@ export default function LandingPage({ onEnter }) {
 
       </div>
 
+      {/* ── Botón de acceso directo ── */}
+      <div style={{ textAlign: 'center', padding: '12px 40px 52px' }}>
+        <p style={{ fontSize: 13, color: MUTED, marginBottom: 16 }}>
+          ¿Ya instalaste DataForge y ejecutaste <code style={{ background: '#e8edf5', padding: '2px 7px', borderRadius: 4, fontWeight: 600 }}>dataici</code>?
+        </p>
+        <button
+          onClick={() => { window.location.href = 'http://127.0.0.1:8000' }}
+          style={{
+            background: NAV, color: 'white', border: 'none',
+            borderRadius: 12, padding: '14px 44px',
+            fontSize: 15, fontWeight: 700, cursor: 'pointer',
+            boxShadow: '0 6px 20px rgba(27,45,91,0.3)',
+            transition: 'filter 0.15s', letterSpacing: '0.02em',
+          }}
+          onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.15)'}
+          onMouseLeave={e => e.currentTarget.style.filter = 'none'}
+        >
+          Abrir DataForge →
+        </button>
+      </div>
+
       {/* Footer */}
       <div style={{ marginTop: 'auto', borderTop: `1px solid ${BORDER}`, padding: '16px 40px', textAlign: 'center', fontSize: 12, color: MUTED, background: 'white' }}>
         DataForge · Universidad Alberto Hurtado · Proyecto de Tesis

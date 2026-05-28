@@ -501,8 +501,12 @@ function AppInner({ project, onBackToProjects }) {
   )
 }
 
+const IS_LOCAL = typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+
 export default function App() {
-  const [view, setView] = useState('landing')   // 'landing' | 'projects' | 'editor'
+  // Si corre local, salta directo a proyectos sin pasar por landing
+  const [view, setView] = useState(IS_LOCAL ? 'projects' : 'landing')
   const [currentProject, setCurrentProject] = useState(null)
 
   // Toggle editor-mode class on body so overflow:hidden only applies in the editor
