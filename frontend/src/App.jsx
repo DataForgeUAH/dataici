@@ -505,9 +505,20 @@ const IS_LOCAL = typeof window !== 'undefined' &&
   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
 
 export default function App() {
-  // Si corre local, salta directo a proyectos sin pasar por landing
   const [view, setView] = useState(IS_LOCAL ? 'projects' : 'landing')
   const [currentProject, setCurrentProject] = useState(null)
+
+  // Auto-escala la UI según el ancho real de la pantalla.
+  // Referencia: 1440px → zoom 1.0; notebook 1280px → zoom ~0.96; 1920px → zoom 1.2
+  useEffect(() => {
+    const applyZoom = () => {
+      const zoom = Math.min(Math.max(window.innerWidth / 1440, 0.65), 1.4)
+      document.documentElement.style.zoom = String(zoom)
+    }
+    applyZoom()
+    window.addEventListener('resize', applyZoom)
+    return () => window.removeEventListener('resize', applyZoom)
+  }, [])
 
   // Toggle editor-mode class on body so overflow:hidden only applies in the editor
   useEffect(() => {

@@ -1,4 +1,9 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  /* Auto-escala toda la UI según ancho de pantalla.
+     Referencia: 1440px → zoom 1.0 — se ajusta en App.jsx */
+  font-size: 16px;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #EEF2F9;
