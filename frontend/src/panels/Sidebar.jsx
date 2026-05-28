@@ -32,12 +32,12 @@ export default function Sidebar({ blocks, onAddBlock, hidden = false }) {
 
   return (
     <div style={{
-      width: 200, background: 'white', borderRight: '1px solid #D8E0EF',
+      width: 230, background: 'white', borderRight: '1px solid #D8E0EF',
       display: 'flex', flexDirection: 'column', overflow: 'hidden', flexShrink: 0,
     }}>
-      <div style={{ padding: '12px 14px', borderBottom: '1px solid #D8E0EF', background: '#1B2D5B' }}>
-        <div style={{ fontWeight: 700, fontSize: 14, color: 'white' }}>Bloques</div>
-        <div style={{ fontSize: 11, color: '#A8BADA', marginTop: 2 }}>Arrastra al canvas o haz clic</div>
+      <div style={{ padding: '14px 16px', borderBottom: '1px solid #D8E0EF', background: '#1B2D5B' }}>
+        <div style={{ fontWeight: 700, fontSize: 16, color: 'white' }}>Bloques</div>
+        <div style={{ fontSize: 12, color: '#A8BADA', marginTop: 3 }}>Arrastra al canvas o haz clic</div>
       </div>
 
       <div style={{ overflow: 'auto', flex: 1 }}>
@@ -53,19 +53,19 @@ export default function Sidebar({ blocks, onAddBlock, hidden = false }) {
                 onClick={() => toggleCategory(cat)}
                 style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  padding: '9px 14px', cursor: 'pointer',
+                  padding: '11px 16px', cursor: 'pointer',
                   background: isCollapsed ? 'white' : '#F4F7FB',
                   userSelect: 'none',
                 }}
               >
-                <span style={{ fontSize: 12, fontWeight: 600, color }}>{cat}</span>
-                <span style={{ fontSize: 14, color: '#9ca3af', lineHeight: 1 }}>
+                <span style={{ fontSize: 14, fontWeight: 700, color }}>{cat}</span>
+                <span style={{ fontSize: 16, color: '#9ca3af', lineHeight: 1 }}>
                   {isCollapsed ? '›' : '⌄'}
                 </span>
               </div>
 
               {!isCollapsed && (
-                <div style={{ padding: '4px 0 8px' }}>
+                <div style={{ padding: '4px 0 10px' }}>
                   {items.map(b => (
                     <button
                       key={b.type}
@@ -73,11 +73,11 @@ export default function Sidebar({ blocks, onAddBlock, hidden = false }) {
                       onDragStart={(e) => onDragStart(e, b)}
                       onClick={() => onAddBlock(b)}
                       style={{
-                        display: 'block', width: 'calc(100% - 20px)',
-                        margin: '2px 10px', padding: '7px 10px',
-                        fontSize: 12, color: '#374151',
+                        display: 'block', width: 'calc(100% - 24px)',
+                        margin: '3px 12px', padding: '9px 12px',
+                        fontSize: 14, color: '#374151',
                         background: '#F4F7FB', border: '1px solid #D8E0EF',
-                        borderRadius: 6, textAlign: 'left', cursor: 'grab',
+                        borderRadius: 8, textAlign: 'left', cursor: 'grab',
                         transition: 'background 0.12s, color 0.12s',
                       }}
                       onMouseEnter={e => {
@@ -101,7 +101,7 @@ export default function Sidebar({ blocks, onAddBlock, hidden = false }) {
         })}
 
         {blocks.length === 0 && (
-          <div style={{ padding: '20px 14px', fontSize: 12, color: '#9ca3af', textAlign: 'center' }}>
+          <div style={{ padding: '24px 16px', fontSize: 14, color: '#9ca3af', textAlign: 'center' }}>
             Conectando con el backend...
           </div>
         )}

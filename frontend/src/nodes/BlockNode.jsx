@@ -1,8 +1,6 @@
 import { Handle, Position } from '@xyflow/react'
 
-// Blocks that produce data but need no upstream connection
 const SOURCE_BLOCKS = new Set(['load_csv', 'read_excel'])
-// Blocks that consume data but produce no downstream output
 const SINK_BLOCKS   = new Set(['write_csv'])
 
 const CATEGORY_COLORS = {
@@ -18,7 +16,6 @@ export default function BlockNode({ data }) {
   const isSource = SOURCE_BLOCKS.has(data.blockType)
   const isSink   = SINK_BLOCKS.has(data.blockType)
 
-  // Multi-input support
   const inputPorts = data.blockType === 'concatenate'
     ? Math.max(2, parseInt(data.params?.input_count) || 2)
     : 1
@@ -27,22 +24,22 @@ export default function BlockNode({ data }) {
     <div style={{
       background: data.selected ? colors.bg : '#FAFBFD',
       border: `2px solid ${data.selected ? colors.border : '#D8E0EF'}`,
-      borderRadius: 10,
-      padding: '10px 14px',
-      width: 200,
+      borderRadius: 14,
+      padding: '13px 18px',
+      width: 240,
       boxShadow: data.selected
         ? `0 0 0 3px ${colors.border}`
-        : '0 1px 4px rgba(27,45,91,0.08)',
+        : '0 2px 6px rgba(27,45,91,0.1)',
       cursor: 'pointer',
       position: 'relative',
     }}>
 
-      {/* ── Input handles (skipped for source blocks) ── */}
+      {/* Input handles */}
       {!isSource && (
         inputPorts === 1 ? (
           <Handle type="target" position={Position.Top} style={{
             background: 'white', border: '2px solid #94a3b8',
-            width: 14, height: 14, top: -7,
+            width: 16, height: 16, top: -8,
           }} />
         ) : (
           Array.from({ length: inputPorts }, (_, i) => {
@@ -55,17 +52,17 @@ export default function BlockNode({ data }) {
                 position={Position.Top}
                 style={{
                   left: `${leftPct}%`,
-                  top: -7,
-                  width: 14, height: 14,
+                  top: -8,
+                  width: 16, height: 16,
                   background: '#86efac',
                   border: '2px solid #16a34a',
                   transform: 'translateX(-50%)',
                 }}
               >
                 <div style={{
-                  position: 'absolute', top: -14, left: '50%',
+                  position: 'absolute', top: -16, left: '50%',
                   transform: 'translateX(-50%)',
-                  fontSize: 9, fontWeight: 700, color: '#16a34a',
+                  fontSize: 11, fontWeight: 700, color: '#16a34a',
                   pointerEvents: 'none', userSelect: 'none',
                 }}>{i + 1}</div>
               </Handle>
@@ -75,12 +72,12 @@ export default function BlockNode({ data }) {
       )}
 
       {/* Category badge + delete */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
         <div style={{
-          fontSize: 10, fontWeight: 600, color: colors.text,
+          fontSize: 12, fontWeight: 700, color: colors.text,
           background: colors.bg, border: `1px solid ${colors.border}`,
-          borderRadius: 4, padding: '1px 6px',
-          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: 120,
+          borderRadius: 5, padding: '2px 8px',
+          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: 150,
         }}>
           {data.category}
         </div>
@@ -88,31 +85,33 @@ export default function BlockNode({ data }) {
           onClick={e => { e.stopPropagation(); data.onDelete && data.onDelete(data.id) }}
           style={{
             marginLeft: 'auto', background: '#FAEAED', border: '1px solid #E9A5AE',
-            borderRadius: 4, color: '#9B1A2C', fontSize: 13, lineHeight: 1,
-            padding: '1px 5px', cursor: 'pointer', fontWeight: 700, flexShrink: 0,
+            borderRadius: 5, color: '#9B1A2C', fontSize: 15, lineHeight: 1,
+            padding: '2px 7px', cursor: 'pointer', fontWeight: 700, flexShrink: 0,
           }}
         >×</button>
       </div>
 
+      {/* Block name */}
       <div style={{
-        fontWeight: 600, fontSize: 13, color: '#1B2D5B',
-        overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2,
+        fontWeight: 700, fontSize: 15, color: '#1B2D5B',
+        overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 3,
       }}>
         {data.userLabel || data.label}
       </div>
 
+      {/* Subtitle */}
       <div style={{
-        fontSize: 11, color: '#7A8DB5',
+        fontSize: 13, color: '#7A8DB5',
         overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
       }}>
         {data.label}
       </div>
 
-      {/* ── Output handle (skipped for sink blocks) ── */}
+      {/* Output handle */}
       {!isSink && (
         <Handle type="source" position={Position.Bottom} style={{
           background: 'white', border: '2px solid #94a3b8',
-          width: 14, height: 14, bottom: -7,
+          width: 16, height: 16, bottom: -8,
         }} />
       )}
     </div>
