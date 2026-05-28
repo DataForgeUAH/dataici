@@ -27,13 +27,13 @@ function CopyBlock({ code }) {
     setTimeout(() => setCopied(false), 1800)
   }
   return (
-    <div style={{ position: 'relative', background: '#0f172a', border: '1px solid #1e3a5f', borderRadius: 10, padding: '14px 16px', marginBottom: 12, fontFamily: 'monospace' }}>
-      <pre style={{ margin: 0, fontSize: 12, color: '#e2e8f0', lineHeight: 1.85, whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>{code}</pre>
+    <div style={{ position: 'relative', background: '#0f172a', border: '1px solid #1e3a5f', borderRadius: 12, padding: '16px 20px', marginBottom: 14, fontFamily: 'monospace' }}>
+      <pre style={{ margin: 0, fontSize: 13.5, color: '#e2e8f0', lineHeight: 1.9, whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>{code}</pre>
       <button onClick={copy} style={{
-        position: 'absolute', top: 10, right: 10,
+        position: 'absolute', top: 12, right: 12,
         background: copied ? '#16a34a' : NAV, color: 'white',
-        border: 'none', borderRadius: 6, padding: '4px 12px',
-        fontSize: 11, fontWeight: 600, cursor: 'pointer', transition: 'background 0.2s',
+        border: 'none', borderRadius: 7, padding: '5px 14px',
+        fontSize: 12, fontWeight: 600, cursor: 'pointer', transition: 'background 0.2s',
       }}>
         {copied ? '✓ Copiado' : 'Copiar'}
       </button>
@@ -44,11 +44,11 @@ function CopyBlock({ code }) {
 function StepBadge({ n, color = NAV }) {
   return (
     <div style={{
-      width: 28, height: 28, borderRadius: '50%',
+      width: 32, height: 32, borderRadius: '50%',
       background: color, color: 'white',
-      fontWeight: 800, fontSize: 13,
+      fontWeight: 800, fontSize: 15,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      flexShrink: 0, marginTop: 1,
+      flexShrink: 0, marginTop: 2,
     }}>{n}</div>
   )
 }
@@ -57,35 +57,35 @@ export default function LandingPage({ onEnter }) {
   const [tab, setTab] = useState('create')
 
   return (
-    <div style={{ minHeight: '100vh', background: '#F4F7FB', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', background: '#F4F7FB', display: 'flex', flexDirection: 'column', fontSize: 16 }}>
 
       {/* Top nav */}
-      <div style={{ background: NAV, padding: '0 40px', height: 52, display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
-        <DataIciIcon size={28} />
-        <span style={{ fontWeight: 800, fontSize: 17, color: 'white', letterSpacing: '-0.3px' }}>DataForge</span>
-        <span style={{ color: '#6E8FC4', fontSize: 11, marginLeft: 2 }}>v1.0.1 · UAH</span>
+      <div style={{ background: NAV, padding: '0 48px', height: 60, display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
+        <DataIciIcon size={32} />
+        <span style={{ fontWeight: 800, fontSize: 20, color: 'white', letterSpacing: '-0.3px' }}>DataForge</span>
+        <span style={{ color: '#6E8FC4', fontSize: 13, marginLeft: 2 }}>v1.0.1 · UAH</span>
       </div>
 
       {/* Hero */}
-      <div style={{ background: `linear-gradient(135deg, ${NAV} 0%, #0f1e40 100%)`, padding: '60px 40px', textAlign: 'center', color: 'white' }}>
-        <div style={{ marginBottom: 24 }}>
-          <DataIciIcon size={72} light />
+      <div style={{ background: `linear-gradient(135deg, ${NAV} 0%, #0f1e40 100%)`, padding: '80px 48px', textAlign: 'center', color: 'white' }}>
+        <div style={{ marginBottom: 28 }}>
+          <DataIciIcon size={88} light />
         </div>
-        <h1 style={{ margin: '0 0 12px', fontSize: 42, fontWeight: 800, letterSpacing: '-1px' }}>DataForge</h1>
-        <p style={{ margin: '0 0 8px', fontSize: 18, color: '#93C5FD', fontWeight: 500 }}>
+        <h1 style={{ margin: '0 0 16px', fontSize: 54, fontWeight: 800, letterSpacing: '-1.5px' }}>DataForge</h1>
+        <p style={{ margin: '0 0 10px', fontSize: 22, color: '#93C5FD', fontWeight: 500 }}>
           Studio de Preprocesamiento de Datos
         </p>
-        <p style={{ margin: '0 0 40px', fontSize: 14, color: '#6E8FC4' }}>
+        <p style={{ margin: '0 0 48px', fontSize: 15, color: '#6E8FC4' }}>
           Universidad Alberto Hurtado · Ingeniería Civil Industrial
         </p>
-        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
           <button
             onClick={() => document.getElementById('instalacion')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
               background: 'rgba(255,255,255,0.12)', color: 'white',
               border: '2px solid rgba(255,255,255,0.3)',
-              borderRadius: 12, padding: '15px 36px',
-              fontSize: 15, fontWeight: 700, cursor: 'pointer',
+              borderRadius: 14, padding: '18px 44px',
+              fontSize: 17, fontWeight: 700, cursor: 'pointer',
               transition: 'all 0.15s', letterSpacing: '0.02em',
             }}
             onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
@@ -98,9 +98,9 @@ export default function LandingPage({ onEnter }) {
             onClick={() => { window.location.href = 'http://127.0.0.1:8000' }}
             style={{
               background: RED, color: 'white', border: 'none',
-              borderRadius: 12, padding: '15px 36px',
-              fontSize: 15, fontWeight: 700, cursor: 'pointer',
-              boxShadow: '0 8px 24px rgba(196,18,45,0.4)',
+              borderRadius: 14, padding: '18px 44px',
+              fontSize: 17, fontWeight: 700, cursor: 'pointer',
+              boxShadow: '0 8px 28px rgba(196,18,45,0.45)',
               transition: 'filter 0.15s', letterSpacing: '0.02em',
             }}
             onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.12)'}
@@ -112,33 +112,33 @@ export default function LandingPage({ onEnter }) {
       </div>
 
       {/* Feature pills */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: 20, padding: '28px 40px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 20, padding: '32px 48px', flexWrap: 'wrap' }}>
         {[
           { icon: '🔗', label: 'Pipeline visual de bloques' },
           { icon: '🐍', label: 'Código Python generado' },
           { icon: '📊', label: 'Exploración de datos' },
         ].map(f => (
-          <div key={f.label} style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 20, padding: '10px 22px', fontSize: 13, color: NAV, fontWeight: 500, display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span>{f.icon}</span>{f.label}
+          <div key={f.label} style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 24, padding: '13px 28px', fontSize: 15, color: NAV, fontWeight: 500, display: 'flex', alignItems: 'center', gap: 10, boxShadow: '0 2px 8px rgba(27,45,91,0.06)' }}>
+            <span style={{ fontSize: 18 }}>{f.icon}</span>{f.label}
           </div>
         ))}
       </div>
 
       {/* Installation */}
-      <div id="instalacion" style={{ maxWidth: 860, margin: '0 auto', padding: '0 40px 60px', width: '100%', display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <div id="instalacion" style={{ maxWidth: 980, margin: '0 auto', padding: '0 48px 80px', width: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 24 }}>
 
         {/* Card 1 — Setup */}
-        <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 16, overflow: 'hidden', boxShadow: '0 2px 12px rgba(27,45,91,0.07)' }}>
-          <div style={{ background: NAV, padding: '18px 28px' }}>
-            <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: 'white' }}>Instalación</h2>
-            <p style={{ margin: '4px 0 0', fontSize: 13, color: '#93C5FD' }}>
+        <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 20, overflow: 'hidden', boxShadow: '0 2px 16px rgba(27,45,91,0.08)' }}>
+          <div style={{ background: NAV, padding: '22px 32px' }}>
+            <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: 'white' }}>Instalación</h2>
+            <p style={{ margin: '6px 0 0', fontSize: 14, color: '#93C5FD' }}>
               Configura el entorno de DataForge en tu computador
             </p>
           </div>
 
-          <div style={{ padding: '24px 28px' }}>
+          <div style={{ padding: '28px 32px' }}>
             {/* Prerequisite */}
-            <div style={{ background: '#FDF3E6', border: '1px solid #F0C07B', borderRadius: 10, padding: '14px 18px', marginBottom: 24, fontSize: 13, color: '#865008', lineHeight: 1.6 }}>
+            <div style={{ background: '#FDF3E6', border: '1px solid #F0C07B', borderRadius: 12, padding: '16px 22px', marginBottom: 28, fontSize: 14, color: '#865008', lineHeight: 1.7 }}>
               <strong>Requisito previo:</strong> Instala{' '}
               <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noreferrer"
                 style={{ color: '#c07000', fontWeight: 600 }}>Miniconda</a>
@@ -146,13 +146,13 @@ export default function LandingPage({ onEnter }) {
             </div>
 
             {/* Tabs */}
-            <div style={{ display: 'flex', borderBottom: `2px solid ${BORDER}`, marginBottom: 20 }}>
+            <div style={{ display: 'flex', borderBottom: `2px solid ${BORDER}`, marginBottom: 24 }}>
               {[
                 { key: 'create', label: '✨ Primera instalación' },
                 { key: 'update', label: '🔄 Actualizar entorno existente' },
               ].map(t => (
                 <button key={t.key} onClick={() => setTab(t.key)} style={{
-                  padding: '10px 24px', fontSize: 13, fontWeight: 600, border: 'none', background: 'none', cursor: 'pointer',
+                  padding: '12px 28px', fontSize: 14, fontWeight: 600, border: 'none', background: 'none', cursor: 'pointer',
                   color: tab === t.key ? NAV : MUTED,
                   borderBottom: `3px solid ${tab === t.key ? NAV : 'transparent'}`,
                   marginBottom: -2, transition: 'color 0.15s',
@@ -162,55 +162,55 @@ export default function LandingPage({ onEnter }) {
               ))}
             </div>
 
-            <p style={{ fontSize: 13, color: '#374151', margin: '0 0 14px' }}>
+            <p style={{ fontSize: 14, color: '#374151', margin: '0 0 16px' }}>
               {tab === 'create'
                 ? 'Abre Anaconda Prompt (Windows) o terminal (macOS/Linux) y ejecuta:'
                 : 'Si ya tienes el entorno creado, actualiza DataForge con este comando:'}
             </p>
             <CopyBlock code={tab === 'create' ? CMD_CREATE : CMD_UPDATE} />
-            <p style={{ fontSize: 12, color: MUTED, margin: '4px 0 0' }}>
+            <p style={{ fontSize: 13, color: MUTED, margin: '6px 0 0' }}>
               Los mismos comandos funcionan en Windows, macOS y Linux.
             </p>
           </div>
         </div>
 
         {/* Card 2 — Run */}
-        <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 16, overflow: 'hidden', boxShadow: '0 2px 12px rgba(27,45,91,0.07)' }}>
-          <div style={{ background: '#0f572e', padding: '18px 28px', display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span style={{ fontSize: 22 }}>🚀</span>
+        <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 20, overflow: 'hidden', boxShadow: '0 2px 16px rgba(27,45,91,0.08)' }}>
+          <div style={{ background: '#0f572e', padding: '22px 32px', display: 'flex', alignItems: 'center', gap: 14 }}>
+            <span style={{ fontSize: 26 }}>🚀</span>
             <div>
-              <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: 'white' }}>Iniciar DataForge</h2>
-              <p style={{ margin: '4px 0 0', fontSize: 13, color: '#86efac' }}>
+              <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: 'white' }}>Iniciar DataForge</h2>
+              <p style={{ margin: '6px 0 0', fontSize: 14, color: '#86efac' }}>
                 Ejecuta esto cada vez que quieras usar la plataforma
               </p>
             </div>
           </div>
 
-          <div style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', gap: 24 }}>
             {/* Step 1 */}
-            <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
               <StepBadge n={1} color="#0f572e" />
               <div style={{ flex: 1 }}>
-                <p style={{ margin: '0 0 10px', fontSize: 13, color: '#374151', fontWeight: 500 }}>
+                <p style={{ margin: '0 0 12px', fontSize: 14, color: '#374151', fontWeight: 500 }}>
                   En Anaconda Prompt o terminal, ejecuta:
                 </p>
                 <CopyBlock code={CMD_RUN} />
-                <p style={{ fontSize: 12, color: MUTED, margin: '4px 0 0' }}>
+                <p style={{ fontSize: 13, color: MUTED, margin: '4px 0 0' }}>
                   El terminal mostrará la URL — <strong>no abrirá el navegador automáticamente</strong>.
                 </p>
               </div>
             </div>
 
             {/* Step 2 */}
-            <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
               <StepBadge n={2} color="#0f572e" />
               <div style={{ flex: 1 }}>
-                <p style={{ margin: '0 0 10px', fontSize: 13, color: '#374151', fontWeight: 500 }}>
+                <p style={{ margin: '0 0 12px', fontSize: 14, color: '#374151', fontWeight: 500 }}>
                   Vuelve a esta página y haz clic en <strong>Abrir DataForge →</strong> (botón de arriba).
                 </p>
-                <div style={{ background: '#f0fdf4', border: '1px solid #86efac', borderRadius: 10, padding: '14px 20px', display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <span style={{ fontSize: 20 }}>✅</span>
-                  <div style={{ fontSize: 13, color: '#065f46' }}>
+                <div style={{ background: '#f0fdf4', border: '1px solid #86efac', borderRadius: 12, padding: '16px 24px', display: 'flex', alignItems: 'center', gap: 16 }}>
+                  <span style={{ fontSize: 24 }}>✅</span>
+                  <div style={{ fontSize: 14, color: '#065f46' }}>
                     Serás redirigido directamente a tus <strong>proyectos</strong>.
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export default function LandingPage({ onEnter }) {
       </div>
 
       {/* Footer */}
-      <div style={{ marginTop: 'auto', borderTop: `1px solid ${BORDER}`, padding: '16px 40px', textAlign: 'center', fontSize: 12, color: MUTED, background: 'white' }}>
+      <div style={{ marginTop: 'auto', borderTop: `1px solid ${BORDER}`, padding: '20px 48px', textAlign: 'center', fontSize: 13, color: MUTED, background: 'white' }}>
         DataForge · Universidad Alberto Hurtado · Proyecto de Tesis
       </div>
     </div>
