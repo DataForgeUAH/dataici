@@ -7,7 +7,7 @@ const BORDER = '#D8E0EF'
 
 // ── Installation commands ─────────────────────────────────────────────────────
 // Reemplaza USERNAME con el usuario real de GitHub antes de publicar
-const GITHUB_URL = "https://github.com/dataforgeuah/dataici.git"
+const GITHUB_URL = "https://github.com/DataForgeUAH/dataici.git"
 
 const CMD_CREATE = `conda create --yes --name dataici python=3.11
 conda activate dataici
@@ -54,8 +54,22 @@ function StepBadge({ n, color = NAV }) {
   )
 }
 
+// Detecta si está corriendo local (app instalada) o en web pública
+const IS_LOCAL = typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+
 export default function LandingPage({ onEnter }) {
   const [tab, setTab] = useState('create') // 'create' | 'update'
+
+  const handleBoton = () => {
+    if (IS_LOCAL) {
+      // App corriendo local → ir a proyectos
+      onEnter()
+    } else {
+      // Página web pública → scroll a instalación
+      document.getElementById('instalacion')?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <div style={{ minHeight: '100vh', background: '#F4F7FB', display: 'flex', flexDirection: 'column' }}>
@@ -79,7 +93,7 @@ export default function LandingPage({ onEnter }) {
         <p style={{ margin: '0 0 40px', fontSize: 14, color: '#6E8FC4' }}>
           Universidad Alberto Hurtado · Ingeniería Civil Industrial
         </p>
-        <button onClick={onEnter} style={{
+        <button onClick={handleBoton} style={{
           background: RED, color: 'white', border: 'none',
           borderRadius: 12, padding: '16px 48px',
           fontSize: 16, fontWeight: 700, cursor: 'pointer',
@@ -90,7 +104,7 @@ export default function LandingPage({ onEnter }) {
           onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.12)'}
           onMouseLeave={e => e.currentTarget.style.filter = 'none'}
         >
-          Abrir DataForge →
+          {IS_LOCAL ? 'Abrir DataForge →' : 'Cómo instalar ↓'}
         </button>
       </div>
 
@@ -108,7 +122,7 @@ export default function LandingPage({ onEnter }) {
       </div>
 
       {/* ── Installation ── */}
-      <div style={{ maxWidth: 860, margin: '0 auto', padding: '0 40px 60px', width: '100%', display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <div id="instalacion" style={{ maxWidth: 860, margin: '0 auto', padding: '0 40px 60px', width: '100%', display: 'flex', flexDirection: 'column', gap: 20 }}>
 
         {/* Card 1 — Setup */}
         <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 16, overflow: 'hidden', boxShadow: '0 2px 12px rgba(27,45,91,0.07)' }}>
