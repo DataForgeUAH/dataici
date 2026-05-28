@@ -464,7 +464,7 @@ function AppInner({ project, onBackToProjects }) {
 
         {/* Right panel */}
         {!showResults && !designerNode && (
-        <div style={{ width: 300, borderLeft: '1px solid #D8E0EF', display: 'flex', flexDirection: 'column', background: '#F4F7FB', overflow: 'hidden' }}>
+        <div style={{ width: 340, borderLeft: '1px solid #D8E0EF', display: 'flex', flexDirection: 'column', background: '#F4F7FB', overflow: 'hidden' }}>
           {selectedNodeData ? (
             <ParamsPanel
               node={selectedNodeData}
