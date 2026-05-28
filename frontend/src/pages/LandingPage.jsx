@@ -59,18 +59,65 @@ const IS_LOCAL = typeof window !== 'undefined' &&
   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
 
 export default function LandingPage({ onEnter }) {
-  const [tab, setTab] = useState('create') // 'create' | 'update'
+  const [tab, setTab] = useState('create')
 
-  const handleBoton = () => {
-    if (IS_LOCAL) {
-      // App corriendo local → ir a proyectos
-      onEnter()
-    } else {
-      // Página web pública → scroll a instalación
-      document.getElementById('instalacion')?.scrollIntoView({ behavior: 'smooth' })
-    }
+  // ── Modo local: pantalla de conexión limpia ──────────────────────────────
+  if (IS_LOCAL) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        background: `linear-gradient(135deg, ${NAV} 0%, #0f1e40 100%)`,
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      }}>
+        {/* Nav mínimo */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 52, display: 'flex', alignItems: 'center', padding: '0 32px', gap: 10 }}>
+          <DataIciIcon size={26} light />
+          <span style={{ fontWeight: 800, fontSize: 16, color: 'white', letterSpacing: '-0.3px' }}>DataForge</span>
+          <span style={{ color: '#6E8FC4', fontSize: 11 }}>v1.0 · UAH</span>
+        </div>
+
+        {/* Centro */}
+        <div style={{ textAlign: 'center', color: 'white', padding: '0 40px' }}>
+          <div style={{ marginBottom: 28 }}>
+            <DataIciIcon size={80} light />
+          </div>
+          <h1 style={{ margin: '0 0 10px', fontSize: 46, fontWeight: 800, letterSpacing: '-1.5px' }}>DataForge</h1>
+          <p style={{ margin: '0 0 6px', fontSize: 17, color: '#93C5FD', fontWeight: 500 }}>
+            Studio de Preprocesamiento de Datos
+          </p>
+          <p style={{ margin: '0 0 48px', fontSize: 13, color: '#6E8FC4' }}>
+            Universidad Alberto Hurtado · Ingeniería Civil Industrial
+          </p>
+
+          {/* Indicador de conexión */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 36 }}>
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 8px #4ade80' }} />
+            <span style={{ fontSize: 13, color: '#86efac', fontWeight: 500 }}>DataForge conectado · 127.0.0.1:8000</span>
+          </div>
+
+          <button onClick={onEnter} style={{
+            background: RED, color: 'white', border: 'none',
+            borderRadius: 14, padding: '18px 56px',
+            fontSize: 17, fontWeight: 700, cursor: 'pointer',
+            boxShadow: '0 8px 32px rgba(196,18,45,0.5)',
+            transition: 'filter 0.15s', letterSpacing: '0.02em',
+          }}
+            onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.15)'}
+            onMouseLeave={e => e.currentTarget.style.filter = 'none'}
+          >
+            Abrir DataForge →
+          </button>
+        </div>
+
+        {/* Footer */}
+        <div style={{ position: 'absolute', bottom: 20, fontSize: 11, color: '#3D5A8A' }}>
+          DataForge · Universidad Alberto Hurtado · Proyecto de Tesis
+        </div>
+      </div>
+    )
   }
 
+  // ── Modo web pública: landing con instrucciones ──────────────────────────
   return (
     <div style={{ minHeight: '100vh', background: '#F4F7FB', display: 'flex', flexDirection: 'column' }}>
 
@@ -93,18 +140,19 @@ export default function LandingPage({ onEnter }) {
         <p style={{ margin: '0 0 40px', fontSize: 14, color: '#6E8FC4' }}>
           Universidad Alberto Hurtado · Ingeniería Civil Industrial
         </p>
-        <button onClick={handleBoton} style={{
-          background: RED, color: 'white', border: 'none',
-          borderRadius: 12, padding: '16px 48px',
-          fontSize: 16, fontWeight: 700, cursor: 'pointer',
-          boxShadow: '0 8px 24px rgba(196,18,45,0.4)',
-          transition: 'filter 0.15s',
-          letterSpacing: '0.02em',
-        }}
+        <button
+          onClick={() => document.getElementById('instalacion')?.scrollIntoView({ behavior: 'smooth' })}
+          style={{
+            background: RED, color: 'white', border: 'none',
+            borderRadius: 12, padding: '16px 48px',
+            fontSize: 16, fontWeight: 700, cursor: 'pointer',
+            boxShadow: '0 8px 24px rgba(196,18,45,0.4)',
+            transition: 'filter 0.15s', letterSpacing: '0.02em',
+          }}
           onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.12)'}
           onMouseLeave={e => e.currentTarget.style.filter = 'none'}
         >
-          {IS_LOCAL ? 'Abrir DataForge →' : 'Cómo instalar ↓'}
+          Cómo instalar ↓
         </button>
       </div>
 
