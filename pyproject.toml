@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dataici"
+version = "1.0.0"
+description = "Studio de Preprocesamiento de Datos — Universidad Alberto Hurtado"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.29.0",
+    "pandas>=2.0.0",
+    "openpyxl>=3.1.0",
+    "python-multipart>=0.0.9",
+    "matplotlib>=3.7.0",
+    "numpy>=1.24.0",
+]
+
+[project.scripts]
+dataici = "dataici.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["dataici*"]
+
+[tool.setuptools.package-data]
+dataici = [
+    "static/index.html",
+    "static/assets/*",
+    "blocks/*.py",
+]

@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+venv/
+.venv/
+env/
+
+# Node
+frontend/node_modules/
+frontend/.vite/
+
+# Frontend build — NO ignorar: el dist se incluye en el paquete
+# frontend/dist/   ← NO está en .gitignore a propósito
+
+# DataICI runtime (proyectos se guardan en ~/.dataici, no en el repo)
+backend/projects.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,19 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #EEF2F9;
+  color: #1a1a1a;
+}
+#root { display: flex; flex-direction: column; }
+
+/* Editor mode: lock body to viewport (no scroll) */
+body.editor-mode {
+  height: 100vh;
+  overflow: hidden;
+}
+body.editor-mode #root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+button { cursor: pointer; font-family: inherit; }
