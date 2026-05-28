@@ -140,20 +140,37 @@ export default function LandingPage({ onEnter }) {
         <p style={{ margin: '0 0 40px', fontSize: 14, color: '#6E8FC4' }}>
           Universidad Alberto Hurtado · Ingeniería Civil Industrial
         </p>
-        <button
-          onClick={() => document.getElementById('instalacion')?.scrollIntoView({ behavior: 'smooth' })}
-          style={{
-            background: RED, color: 'white', border: 'none',
-            borderRadius: 12, padding: '16px 48px',
-            fontSize: 16, fontWeight: 700, cursor: 'pointer',
-            boxShadow: '0 8px 24px rgba(196,18,45,0.4)',
-            transition: 'filter 0.15s', letterSpacing: '0.02em',
-          }}
-          onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.12)'}
-          onMouseLeave={e => e.currentTarget.style.filter = 'none'}
-        >
-          Cómo instalar ↓
-        </button>
+        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button
+            onClick={() => document.getElementById('instalacion')?.scrollIntoView({ behavior: 'smooth' })}
+            style={{
+              background: 'rgba(255,255,255,0.12)', color: 'white',
+              border: '2px solid rgba(255,255,255,0.3)',
+              borderRadius: 12, padding: '15px 36px',
+              fontSize: 15, fontWeight: 700, cursor: 'pointer',
+              transition: 'all 0.15s', letterSpacing: '0.02em',
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+          >
+            Cómo instalar ↓
+          </button>
+
+          <button
+            onClick={() => { window.location.href = 'http://127.0.0.1:8000' }}
+            style={{
+              background: RED, color: 'white', border: 'none',
+              borderRadius: 12, padding: '15px 36px',
+              fontSize: 15, fontWeight: 700, cursor: 'pointer',
+              boxShadow: '0 8px 24px rgba(196,18,45,0.4)',
+              transition: 'filter 0.15s', letterSpacing: '0.02em',
+            }}
+            onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.12)'}
+            onMouseLeave={e => e.currentTarget.style.filter = 'none'}
+          >
+            Abrir DataForge →
+          </button>
+        </div>
       </div>
 
       {/* ── Feature pills ── */}
@@ -266,27 +283,6 @@ export default function LandingPage({ onEnter }) {
           </div>
         </div>
 
-      </div>
-
-      {/* ── Botón de acceso directo ── */}
-      <div style={{ textAlign: 'center', padding: '12px 40px 52px' }}>
-        <p style={{ fontSize: 13, color: MUTED, marginBottom: 16 }}>
-          ¿Ya instalaste DataForge y ejecutaste <code style={{ background: '#e8edf5', padding: '2px 7px', borderRadius: 4, fontWeight: 600 }}>dataici</code>?
-        </p>
-        <button
-          onClick={() => { window.location.href = 'http://127.0.0.1:8000' }}
-          style={{
-            background: NAV, color: 'white', border: 'none',
-            borderRadius: 12, padding: '14px 44px',
-            fontSize: 15, fontWeight: 700, cursor: 'pointer',
-            boxShadow: '0 6px 20px rgba(27,45,91,0.3)',
-            transition: 'filter 0.15s', letterSpacing: '0.02em',
-          }}
-          onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.15)'}
-          onMouseLeave={e => e.currentTarget.style.filter = 'none'}
-        >
-          Abrir DataForge →
-        </button>
       </div>
 
       {/* Footer */}
