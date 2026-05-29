@@ -67,18 +67,58 @@ export default function LandingPage({ onEnter }) {
       </div>
 
       {/* Hero */}
-      <div style={{ background: `linear-gradient(135deg, ${NAV} 0%, #0f1e40 100%)`, padding: '80px 48px', textAlign: 'center', color: 'white' }}>
-        <div style={{ marginBottom: 28 }}>
-          <DataIciIcon size={88} light />
+      <div style={{ background: `linear-gradient(135deg, ${NAV} 0%, #0f1e40 100%)`, padding: '80px 48px', textAlign: 'center', color: 'white', position: 'relative', overflow: 'hidden' }}>
+
+        {/* Código pandas de fondo */}
+        {[
+          // horizontal
+          { t: 'import pandas as pd',         x: '2%',   y: '8%',   r: 0,    o: 0.55 },
+          { t: 'import pandas as pd',         x: '2%',   y: '14%',  r: 0,    o: 0.28 },
+          { t: 'df.dropna()',                 x: '72%',  y: '16%',  r: 0,    o: 0.42 },
+          { t: 'df.fillna(method="ffill")',   x: '2%',   y: '88%',  r: 0,    o: 0.48 },
+          { t: 'pd.concat([df1, df2])',       x: '55%',  y: '94%',  r: 0,    o: 0.4  },
+          { t: 'df.reset_index()',            x: '70%',  y: '92%',  r: 0,    o: 0.44 },
+          { t: 'df.drop_duplicates()',        x: '28%',  y: '96%',  r: 0,    o: 0.38 },
+          { t: 'df[df["col"] > 0]',           x: '2%',   y: '20%',  r: 0,    o: 0.36 },
+          { t: 'df.to_csv("out.csv")',        x: '72%',  y: '38%',  r: 0,    o: 0.3  },
+          { t: 'df.dtypes',                   x: '22%',  y: '12%',  r: 0,    o: 0.32 },
+          // diagonal
+          { t: 'pd.read_csv("data.csv")',     x: '78%',  y: '24%',  r: -35,  o: 0.4  },
+          { t: 'df.resample("1H").mean()',    x: '2%',   y: '36%',  r: 25,   o: 0.36 },
+          { t: 'df.rename(columns={...})',    x: '68%',  y: '74%',  r: -20,  o: 0.44 },
+          { t: 'df.set_index("fecha")',       x: '6%',   y: '70%',  r: 15,   o: 0.3  },
+          { t: 'df.groupby("col").agg("sum")',x: '44%',  y: '5%',   r: -12,  o: 0.34 },
+          { t: 'df.astype({"col": float})',   x: '10%',  y: '92%',  r: -8,   o: 0.38 },
+          { t: 'df.sample(n=100)',            x: '74%',  y: '50%',  r: 18,   o: 0.28 },
+          { t: 'df.merge(df2, on="id")',      x: '42%',  y: '90%',  r: -15,  o: 0.3  },
+          // vertical
+          { t: 'df.describe()',               x: '96%',  y: '18%',  r: 90,   o: 0.38 },
+          { t: 'df.info()',                   x: '0.5%', y: '62%',  r: -90,  o: 0.32 },
+          { t: 'df.shape',                    x: '98%',  y: '55%',  r: 90,   o: 0.3  },
+        ].map((s, i) => (
+          <span key={i} style={{
+            position: 'absolute', left: s.x, top: s.y,
+            fontFamily: 'monospace', fontSize: 11, color: '#4a6fa1',
+            opacity: s.o, transform: `rotate(${s.r}deg)`,
+            transformOrigin: 'left top', whiteSpace: 'nowrap',
+            pointerEvents: 'none', userSelect: 'none',
+          }}>{s.t}</span>
+        ))}
+
+        {/* Contenido central */}
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ marginBottom: 28 }}>
+            <DataIciIcon size={88} light />
+          </div>
+          <h1 style={{ margin: '0 0 16px', fontSize: 54, fontWeight: 800, letterSpacing: '-1.5px' }}>DataForge</h1>
+          <p style={{ margin: '0 0 10px', fontSize: 22, color: '#93C5FD', fontWeight: 500 }}>
+            Studio de Preprocesamiento de Datos
+          </p>
+          <p style={{ margin: '0 0 48px', fontSize: 15, color: '#6E8FC4' }}>
+            Universidad Alberto Hurtado · Ingeniería Civil Industrial
+          </p>
         </div>
-        <h1 style={{ margin: '0 0 16px', fontSize: 54, fontWeight: 800, letterSpacing: '-1.5px' }}>DataForge</h1>
-        <p style={{ margin: '0 0 10px', fontSize: 22, color: '#93C5FD', fontWeight: 500 }}>
-          Studio de Preprocesamiento de Datos
-        </p>
-        <p style={{ margin: '0 0 48px', fontSize: 15, color: '#6E8FC4' }}>
-          Universidad Alberto Hurtado · Ingeniería Civil Industrial
-        </p>
-        <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div style={{ position: 'relative', zIndex: 1, display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
           <button
             onClick={() => document.getElementById('instalacion')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
